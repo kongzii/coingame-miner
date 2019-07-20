@@ -35,7 +35,7 @@ URL: Address of API endpoint
 ## Run
 
 ```
-./TestDayMiner ../config.cfg
+./miner ../config.cfg
 ```
 
 ## Performance

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(TestDayMiner)
+project(miner)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -17,7 +17,7 @@ find_package(Threads REQUIRED)
 include_directories("../include/")
 include_directories(${OPENSSL_INCLUDE_DIR})
 
-add_executable(TestDayMiner
+add_executable(miner
         src/main.cpp
         src/Config/Config.h
         src/Config/Config.cpp
@@ -32,4 +32,4 @@ add_executable(TestDayMiner
         src/Miner/State.h
         src/Miner/GeneratorWorkers.cpp)
 
-target_link_libraries(TestDayMiner pthread ${OPENSSL_LIBRARIES} ${CURLPP_LDFLAGS})
+target_link_libraries(miner pthread ${OPENSSL_LIBRARIES} ${CURLPP_LDFLAGS})
