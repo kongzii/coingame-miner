@@ -1,0 +1,3 @@
+Hashing (using openssl/sha.h): 86%
+Miner: 11%
+Requests: 3%
