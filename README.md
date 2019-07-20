@@ -50,4 +50,4 @@ Requests: 3%
 
 In my opinion, even though miner logic could still be improved, it would make only little difference until new hashing method is implemented.
 
-![Performance example](https://github.com/kongzii/coingame-miner/blob/master/images/flame_chart.png "Performance example")
+![Performance example](https://github.com/kongzii/coingame-miner/blob/master/images/performance.png "Performance example")
