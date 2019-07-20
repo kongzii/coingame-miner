@@ -37,3 +37,17 @@ URL: Address of API endpoint
 ```
 ./TestDayMiner ../config.cfg
 ```
+
+## Performance
+
+According to performance measurements, time in application is divided (see images/flame_chart.png):
+
+```
+Hashing of block content (using openssl/sha.h): 86%
+Miner: 11%
+Requests: 3%
+```
+
+In my opinion, even though miner logic could still be improved, it would make only little difference until new hashing method is implemented.
+
+![Performance example](https://github.com/kongzii/coingame-miner/blob/master/images/flame_chart.png "Performance example")
