@@ -48,7 +48,7 @@ void *worker(void *args_) {
             continue;
         }
 
-        if (my_block.nonce > args->generator->nonce_limit && block_body_content.empty()) {
+        if (my_block.nonce > my_block.loop * args->generator->nonce_limit && block_body_content.empty()) {
             // Checks size of integer instead of exact time passed, because getting current time is costly operation
             // Modify value to not be too often (getting new transactions from server is very slow)
             // but also to not be too few (transactions become outdated easily)

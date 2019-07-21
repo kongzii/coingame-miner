@@ -17,6 +17,7 @@ public:
     time_t timestamp = 0;
     std::string iso_timestamp = "";
     int difficulty = 0;
+    unsigned int loop = 0;
     unsigned int nonce = 0;
 
     std::string miner_name;

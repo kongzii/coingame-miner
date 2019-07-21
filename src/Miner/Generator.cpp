@@ -42,7 +42,16 @@ void Generator::update_blockchain() {
 void Generator::update_block(Block &block, int worker_id) {
     // Update block values
 
-    block.nonce = 0;
+    if (block.loop * block.nonce + this->nonce_limit >= std::numeric_limits<unsigned int>::max()) {
+        // I want to reset nonce back to 0 only in case that it would overflow
+        // Otherwise it could happen that worker gets same transactions and just computing everything from begin...
+        block.nonce = 0;
+        block.loop = 0;
+    }
+
+    // TODO: With enough available threads, different workers could start getting same set of transactions and therefore
+    // TODO: they would compute same hash values, so get each worker his own nonce range
+
     block.update_timestamp();
     block.difficulty = this->state.difficulty;
 
@@ -59,6 +68,10 @@ void Generator::update_block(Block &block, int worker_id) {
 
     block.create_block_before_nonce(true);
     block.create_block_after_nonce(true);
+
+    // New loop started
+
+    block.loop += 1;
 }
 
 int Generator::calculate_difficulty(const std::string &content) {

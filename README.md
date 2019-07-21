@@ -38,6 +38,20 @@ URL: Address of API endpoint
 ./miner ../config.cfg
 ```
 
+## Master - Workers architecture
+
+Application uses standart master-worker(s) architecture, and works like this:
+
+1. Master fetches blockchain information from server (difficulty, last block, etc.)
+2. Master spawns N workers
+3. All workers uses blockchain information from master memory, except for transactions, which are divided uniquely to them
+4. When some worker finds block that satisfies difficulty, he sends string representation to the master
+5. All threads get paused and waits
+6. Master sends stringified block to the server, fetches new data and resumes workers
+7. Go to 3.
+
+There is also timeout fuse, where master fetch new data from server if block was not found in a long time, because transactions get invalidated in time.
+
 ## Performance
 
 According to performance measurements, time in application is divided (see images/flame_chart.png):
